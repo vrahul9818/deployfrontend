@@ -1,22 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [message, setMessage] = useState('');
+
+  // Function to handle button click and fetch data
+  const fetchData = () => {
+    fetch('http://localhost:8080/button')
+      .then(response => response.text())
+      .then(data => setMessage(data))
+      .catch(error => console.error('Error fetching data:', error));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img  className="App-logo" alt="logo" />
+        <h1>Frontend App</h1>
+        <button onClick={fetchData}>Fetch Data</button>
+        <p>{message}</p>
       </header>
     </div>
   );
