@@ -5,7 +5,7 @@ function App() {
 
   // Function to handle button click and fetch data
   const fetchData = () => {
-    fetch('http://localhost:8080/button')
+    fetch('http://15.206.205.152:8080//button')
       .then(response => response.text())
       .then(data => setMessage(data))
       .catch(error => console.error('Error fetching data:', error));
